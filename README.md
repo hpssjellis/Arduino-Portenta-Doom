@@ -9,3 +9,7 @@ Repository started May 31, 2026
 
 
 
+The webpage here is a webCam viewer which with the correct HDMI to usbA or C connector allows viewing DOOM or any HDMI or webcam in a recording studio only. It is a single page webpage if you want to vibe code it differently
+
+https://hpssjellis.github.io/Arduino-Portenta-Doom/index.html
+
