@@ -13,3 +13,11 @@ The webpage here is a webCam viewer which with the correct HDMI to usbA or C con
 
 https://hpssjellis.github.io/Arduino-Portenta-Doom/index.html
 
+
+# Cables
+
+You need a power providing HDMI hub.
+
+<img width="821" height="683" alt="cables" src="https://github.com/user-attachments/assets/91481c9e-3aeb-4198-8d7d-4535e2fd8c18" />
+
+
