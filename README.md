@@ -28,7 +28,7 @@ You need a power providing HDMI hub. I had a few more cables when I got my UNOQ 
 
 ```
 
- 1. examples-->system_STM32H474_sytestem-->QSPIFormat
+    1. examples-->system_STM32H474_sytestem-->QSPIFormat
     2. examples-->USB Mass Storage-->AssesFlashAsUsbDisk
     3. move DOOM1.WAD to the second drive(5MB), I also put it on the 4th drive (7MB)
 
