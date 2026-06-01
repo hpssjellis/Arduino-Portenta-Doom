@@ -38,11 +38,10 @@ You need a power providing HDMI hub. I had a few more cables when I got my UNOQ 
 
     7. Check your HDMI powered hub to see if it works. If you have the fancy cables you can use this website 
            https://hpssjellis.github.io/Arduino-Portenta-Doom/index.html
-    8. Then load this version to try to get a joystick and grayscale OLED working
-    9. Find your doom library, look in the compiler output on windows it should be about
+    8. Find your doom library, look in the compiler output on windows it should be about
            C:\Users\[USERNAME]]\AppData\Local\Arduino15\packages\arduino\hardware\mbed_portenta\4.2.1\libraries\doom\src
-    10. Copy the src file as a backup, then go into the src file to look at the include files
-    11. open with a text editor "src/doomgeneric_arduino.cpp" and that is where you work on DOOM. Controls should be doable, an alternate screen might be dififcult since SPI connections are already active
+    9. Copy the src file as a backup, then go into the src file to look at the include files
+    10. open with a text editor "src/doomgeneric_arduino.cpp" and that is where you work on DOOM. Controls should be doable, an alternate screen might be dififcult since SPI connections are already active
 
 
 ```
