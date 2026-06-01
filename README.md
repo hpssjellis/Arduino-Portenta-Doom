@@ -24,7 +24,7 @@ You need a power providing HDMI hub. I had a few more cables when I got my UNOQ 
 
 
 
-
+## Generic steps to get DOOM running on auto mode with an HDMI connector
 
 ```
 
