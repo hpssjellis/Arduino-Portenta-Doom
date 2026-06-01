@@ -1,0 +1,30 @@
+/*
+ * Arduino Serial Monitor Test Sketch
+ * Reads analog values from A0, A1, and A2 and prints them in one line.
+ */
+
+void setup() {
+  // Initialize serial communication at a standard baud rate
+  Serial.begin(9600);
+  Serial.println("--- Analog Read Test Started ---");
+  Serial.println("Reading values from A0, A1, and A2...");
+}
+
+void loop() {
+  // 1. Read the analog values
+  int valueA0 = analogRead(A0);
+  int valueA1 = analogRead(A1);
+  int valueA2 = analogRead(A2);
+
+  // 2. Print the values in a single line to the Serial Monitor
+  // Format: A0=XXX, A1=YYY, A2=ZZZ
+  Serial.print("A0=");
+  Serial.print(valueA0);
+  Serial.print(", A1=");
+  Serial.print(valueA1);
+  Serial.print(", A2=");
+  Serial.println(valueA2);
+
+  // Wait for 1 second before taking the next reading
+  delay(1000); 
+}
