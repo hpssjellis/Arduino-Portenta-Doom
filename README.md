@@ -42,7 +42,7 @@ From the Arduino IDE running portenta board version 4.2.1
     8. Find your doom library, look in the compiler output on windows it should be about
            C:\Users\[USERNAME]]\AppData\Local\Arduino15\packages\arduino\hardware\mbed_portenta\4.2.1\libraries\doom\src
     9. Copy the src file as a backup, then go into the src file to look at the include files
-    10. open with a text editor "src/doomgeneric_arduino.cpp" and that is where you work on DOOM. Controls should be doable, an alternate screen might be dififcult since SPI connections are already active
+    10. open with a text editor "src/doomgeneric_arduino.cpp" and that is where you work on DOOM. Controls should be doable. After making changes save that file but then go back and re-compile the ino file in the arduino IDE.
 
 
 ```
