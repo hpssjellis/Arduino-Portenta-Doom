@@ -1,0 +1,53 @@
+// Pin definitions - Using explicit Portenta macros
+const int myXPin = PIN_A0;  // Explicit Portenta Analog A0
+const int myYPin = PIN_A1;  // Explicit Portenta Analog A1
+const int myButtonPin = PIN_A2; // Explicit Portenta Analog/Digital A2
+
+// Variables to store the values
+int myXValue = 0;
+int myYValue = 0;
+int myButtonState = 0;
+
+void setup() {
+  // Initialize serial communication at 115200 baud
+  Serial.begin(115200);
+  
+  // Wait for serial port to connect (important for native USB boards like Portenta)
+  while (!Serial) {
+    ; 
+  }
+  
+  // Force the Portenta ADC to use 10-bit resolution (0 - 1023)
+  // If you want higher precision, change this to 12 and expect center around 2048
+  analogReadResolution(10);
+  
+  // Set the switch pin as an input with the internal pull-up resistor enabled.
+  pinMode(myXPin, INPUT_PULLDOWN);
+  pinMode(myYPin, INPUT_PULLDOWN);
+  pinMode(myButtonPin, INPUT_PULLUP);
+}
+
+void loop() {
+  // Read the analog inputs
+  myXValue = analogRead(myXPin);
+  myYValue = analogRead(myYPin);
+  
+  // Read the digital button state (LOW means pressed, HIGH means released)
+  myButtonState = digitalRead(myButtonPin);
+
+  // Print the results to the Serial Monitor
+  Serial.print("X-Axis: ");
+  Serial.print(myXValue);
+  Serial.print(" | Y-Axis: ");
+  Serial.print(myYValue);
+  Serial.print(" | Button: ");
+  
+  if (myButtonState == LOW) {
+    Serial.println("PRESSED");
+  } else {
+    Serial.println("RELEASED");
+  }
+
+  // A small delay to keep the serial output readable
+  delay(150);
+}
