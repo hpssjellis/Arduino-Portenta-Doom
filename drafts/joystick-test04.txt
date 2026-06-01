@@ -1,0 +1,35 @@
+// Input test for joystick + buttons
+// Prints all values on one line every 200ms
+//
+// Wiring:
+//   A0  joystick X-axis
+//   A1  joystick Y-axis
+//   A2  Fire button   (active LOW, wired to GND)
+//   A3  Use button    (active LOW, wired to GND)
+//   A4  Enter button  (active LOW, wired to GND)
+//   D2  Joystick SW   (active LOW, INPUT_PULLUP)
+
+#define JOY_SW_PIN 2
+
+void setup() {
+    Serial.begin(115200);
+    pinMode(JOY_SW_PIN, INPUT_PULLUP);
+}
+
+void loop() {
+    int x     = analogRead(A0);
+    int y     = analogRead(A1);
+    int fire  = analogRead(A2);
+    int use   = analogRead(A3);
+    int enter = analogRead(A4);
+    int run   = digitalRead(JOY_SW_PIN);
+
+    Serial.print("X="); Serial.print(x);
+    Serial.print("  Y="); Serial.print(y);
+    Serial.print("  FIRE="); Serial.print(fire);
+    Serial.print("  USE="); Serial.print(use);
+    Serial.print("  ENTER="); Serial.print(enter);
+    Serial.print("  RUN="); Serial.println(run);  // 0=pressed, 1=released
+
+    delay(200);
+}
