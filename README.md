@@ -47,4 +47,11 @@ From the Arduino IDE running portenta board version 4.2.1
 
 ```
 
+# Thst proves DOOM works on the protenta. 
+
+Next stage getting the joystick and two buttons working in a sensible way.
+
+The only file we edit is "doomgeneric_arduino.cpp" not the arduino IDE code.
+
+
 
