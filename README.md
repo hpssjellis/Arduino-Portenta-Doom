@@ -27,6 +27,7 @@ You need a power providing HDMI hub. I had a few more cables when I got my UNOQ 
 ## Generic steps to get DOOM running on auto mode with an HDMI connector
 
 ```
+From the Arduino IDE running portenta board version 4.2.1
 
     1. examples-->system_STM32H474_sytestem-->QSPIFormat
     2. examples-->USB Mass Storage-->AssesFlashAsUsbDisk
