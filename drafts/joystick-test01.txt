@@ -5,7 +5,7 @@
 
 void setup() {
   // Initialize serial communication at a standard baud rate
-  Serial.begin(9600);
+  Serial.begin(115200);
   Serial.println("--- Analog Read Test Started ---");
   Serial.println("Reading values from A0, A1, and A2...");
 }
