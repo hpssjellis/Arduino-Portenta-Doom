@@ -43,10 +43,11 @@ void loop() {
     Serial.println("X             Y             A2RUN    A3FIRE   A4USE    A5ENTER");
     Serial.print(x);    Serial.print("("); Serial.print(xLabel); Serial.print(")  ");
     Serial.print(y);    Serial.print("("); Serial.print(yLabel); Serial.print(")  ");
-    Serial.print(run   == LOW ? "PRESS " : "----- "); 
-    Serial.print(fire  == LOW ? "PRESS " : "----- ");
-    Serial.print(use   == LOW ? "PRESS " : "----- ");
-    Serial.print(enter == LOW ? "PRESS " : "----- ");
+    Serial.print(run   == LOW ? "PRESS " : "    ----- "); 
+    Serial.print(fire  == LOW ? "PRESS " : "   ----- ");
+    Serial.print(use   == LOW ? "PRESS " : "   ----- ");
+    Serial.print(enter == LOW ? "PRESS " : "   ----- ");
+    Serial.println();
     Serial.println();
 
     delay(400);
