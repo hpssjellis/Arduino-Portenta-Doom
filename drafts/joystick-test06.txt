@@ -1,0 +1,60 @@
+// Input diagnostic for Doom controller
+// Prints pin assignments once on startup, then live state every 200ms.
+//
+// Pin layout:
+//   A0  Joystick X-axis  (analog, center ~512)
+//   A1  Joystick Y-axis  (analog, center ~512)
+//   A2  Joystick SW      → KEY_RSHIFT (run)      INPUT_PULLUP, LOW=pressed
+//   A3  Fire button      → KEY_FIRE              INPUT_PULLUP, LOW=pressed
+//   A4  Use/Choose button→ KEY_USE               INPUT_PULLUP, LOW=pressed
+//   A5  Enter/Back button→ KEY_ENTER             INPUT_PULLUP, LOW=pressed
+
+int myCount=0;
+
+void setup() {
+    Serial.begin(115200);
+   // while (!Serial) {}
+   delay(5000);
+
+    pinMode(A2, INPUT_PULLUP);
+    pinMode(A3, INPUT_PULLUP);
+    pinMode(A4, INPUT_PULLUP);
+    pinMode(A5, INPUT_PULLUP);
+
+    Serial.println("=== Doom Controller Pin Diagnostic ===");
+    Serial.println("A0  = Joystick X    (analog, center ~512, left<250, right>750)");
+    Serial.println("A1  = Joystick Y    (analog, center ~512, up<250, down>750)");
+    Serial.println("A2  = Joystick SW   -> RUN    (KEY_RSHIFT) LOW=pressed");
+    Serial.println("A3  = Fire button   -> FIRE   (KEY_FIRE)   LOW=pressed");
+    Serial.println("A4  = Use button    -> USE    (KEY_USE)    LOW=pressed");
+    Serial.println("A5  = Enter button  -> ENTER  (KEY_ENTER)  LOW=pressed");
+    Serial.println("--------------------------------------");
+    Serial.println("X             Y             A2RUN    A3FIRE   A4USE    A5ENTER");
+}
+
+void loop() {
+    myCount += 1;
+    int x     = analogRead(A0);
+    int y     = analogRead(A1);
+    int run   = digitalRead(D2);
+    int fire  = digitalRead(D3);
+    int use   = digitalRead(D4);
+    int enter = digitalRead(D5);
+
+    const char* xLabel = (x > 750) ? "RIGHT" : (x < 250) ? "LEFT " : "CTR  ";
+    const char* yLabel = (y > 750) ? "DOWN " : (y < 250) ? "UP   " : "CTR  ";
+
+    if (myCount % 5 == 0){
+       Serial.println("X             Y             A2RUN    A3FIRE   A4USE    A5ENTER");
+    }
+    Serial.print(x);    Serial.print("("); Serial.print(xLabel); Serial.print(")  ");
+    Serial.print(y);    Serial.print("("); Serial.print(yLabel); Serial.print(")  ");
+    Serial.print(run   == LOW ? "    PRESS " : "    ----- "); 
+    Serial.print(fire  == LOW ? "   PRESS " : "   ----- ");
+    Serial.print(use   == LOW ? "   PRESS " : "   ----- ");
+    Serial.print(enter == LOW ? "   PRESS " : "   ----- ");
+    Serial.println();
+
+
+    delay(1000);
+}
