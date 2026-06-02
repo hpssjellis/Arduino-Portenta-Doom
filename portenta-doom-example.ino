@@ -45,7 +45,7 @@ char*argv[] = {"/fs/doom", "-iwad", "/fs/DOOM1.WAD"};
 void setup() {
   int err =  fs.mount(&fs_data);
   if (err) {
-    printf("No filesystem found, please run AccessFlashAsUSBDisk sketch and copy DOOM1.WAD in the big partition");
+    printf("No filesystem found, please run AccessFlashAsUSBDisk sketch and copy DOOM1.WAD in the 2nd partition");
     pinMode(LEDB, OUTPUT);
     while (1) {
       digitalWrite(LEDB, LOW);
