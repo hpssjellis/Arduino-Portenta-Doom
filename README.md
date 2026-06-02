@@ -13,7 +13,7 @@ Note: A stable power supply is essential a wall usb charger is needed! (Your com
 
 ## Overview
 
-Correct board version 4.2.1 (up to 4.6.0 is broken) for Arduino PortentaH7, Run examples-->USB Mass Storage-->AssesFlashAsUsbDisk and grab DOOM1.WAD into the 5MB folder which is folder #2,  load examples-->Doom-->Doom, find the Doom src and replace ```src/doomgeneric_arduino.cpp``` with the code above, connect joystick A0 x, A1 y and pins D2, D3, D4, D5 and connect all the HDMI hub cables
+Correct board version 4.2.1 (up to 4.6.0 is broken) for Arduino PortentaH7, Run examples-->USB Mass Storage-->AssesFlashAsUsbDisk and grab DOOM1.WAD from https://doomwiki.org/wiki/DOOM1.WAD and put it into the 5MB folder which is folder #2,  load examples-->Doom-->Doom, find the Doom src in your arduino board install location and replace ```src/doomgeneric_arduino.cpp``` with the code above, connect joystick A0 x, A1 y and pins D2, D3, D4, D5 and connect all the HDMI hub cables
 
 
 # web viewer
@@ -38,7 +38,8 @@ From the Arduino IDE running portenta board version 4.2.1
 
     1. examples-->system_STM32H474_sytestem-->QSPIFormat
     2. examples-->USB Mass Storage-->AssesFlashAsUsbDisk
-    3. move DOOM1.WAD to the second drive(5MB), I also put it on the 4th drive (7MB)
+     
+    3. move DOOM1.WAD to the second drive(5MB), I also put it on the 4th drive (7MB). Get it from https://doomwiki.org/wiki/DOOM1.WAD
 
     4. examples-->system_STM32H474_sytestem-->QSPIfReadPartitions (Just to check partition sizes)
     5. install arduino portenta board v4.2.1 or lower
