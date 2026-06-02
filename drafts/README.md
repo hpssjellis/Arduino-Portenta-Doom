@@ -3,6 +3,9 @@ Here is where I try stuff. Looks like we are only editing the .cpp file so that 
 
 newkeys##-cpp.txt  where the higher number is the latest attempt and lets hope is the better version
 
+newkeys06-cpp.txt kind of works
+
+
 So far pins are:
 
 A0 joystick X  
