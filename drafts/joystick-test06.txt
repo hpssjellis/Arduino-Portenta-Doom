@@ -29,7 +29,7 @@ void setup() {
     Serial.println("A4  = Use button    -> USE    (KEY_USE)    LOW=pressed");
     Serial.println("A5  = Enter button  -> ENTER  (KEY_ENTER)  LOW=pressed");
     Serial.println("--------------------------------------");
-    Serial.println("X             Y             A2RUN    A3FIRE   A4USE    A5ENTER");
+    Serial.println("X             Y             D2RUN    D3FIRE   D4USE    D5ENTER");
 }
 
 void loop() {
@@ -45,7 +45,7 @@ void loop() {
     const char* yLabel = (y > 750) ? "DOWN " : (y < 250) ? "UP   " : "CTR  ";
 
     if (myCount % 5 == 0){
-       Serial.println("X             Y             A2RUN    A3FIRE   A4USE    A5ENTER");
+       Serial.println("X             Y             D2RUN    D3FIRE   D4USE    D5ENTER");
     }
     Serial.print(x);    Serial.print("("); Serial.print(xLabel); Serial.print(")  ");
     Serial.print(y);    Serial.print("("); Serial.print(yLabel); Serial.print(")  ");
