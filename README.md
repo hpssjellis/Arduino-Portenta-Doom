@@ -11,6 +11,13 @@ Repository started May 31, 2026
 Note: A stable power supply is essential a wall usb charger is needed! (Your computer USBA outlet, or a cell phone battery pack may not have enough power to stablize the hdmi output.)
 
 
+## Overview
+
+Correct board version 4.2.1 (up to 4.6.0 is broken) for Arduino PortentaH7, Run examples-->USB Mass Storage-->AssesFlashAsUsbDisk and grab DOOM1.WAD into the 5MB folder which is folder #2,  load examples-->Doom-->Doom, find the Doom src and replace ```src/doomgeneric_arduino.cpp``` with the code above, connect joystick A0 x, A1 y and pins D2, D3, D4, D5 and connect all the HDMI hub cables
+
+
+# web viewer
+
 The webpage here is a webCam viewer-recorder which with the correct HDMI to usbA or C connector allows viewing DOOM or any HDMI or webcam in a recording studio only. It is a single page webpage if you want to vibe code it differently
 
 https://hpssjellis.github.io/Arduino-Portenta-Doom/index.html
