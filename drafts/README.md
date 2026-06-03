@@ -27,4 +27,4 @@ D5 button Fire.
 
 
 
-<img width="1485" height="1255" alt="image" src="https://github.com/user-attachments/assets/d4600dcb-7ead-431d-9f93-66dae5c6db00" />
+https://camo.githubusercontent.com/09f6c03fc856a031edad37e8dd9026fdb2a3affe20f220cf817f728404723ccc/68747470733a2f2f636f6e74656e742e61726475696e6f2e63632f6173736574732f50696e6f75742d506f7274656e746148375f6c61746573742e706e67
