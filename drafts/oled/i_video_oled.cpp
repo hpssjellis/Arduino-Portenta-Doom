@@ -1,19 +1,12 @@
-// i_video_oled.cpp  --  doom-oled-v004
+// i_video_oled.cpp  --  doom-oled-v004b
 //
 // C++ companion to i_video.c.
-// Owns the Adafruit_SSD1327 object and exposes four plain-C functions
-// that i_video.c calls.  Drop this file in the same src folder as i_video.c.
+// Drop in the same src folder as i_video.c.
 //
-// The OLED framebuffer (128x128, 4-bit grayscale) is built row by row
-// via myOledRow(), then pushed in one myOledFlush() call.
-// A small status bar occupies rows 88-127 (below the 80-row game image).
-//
-// Wiring (software SPI):
-//   DIN (MOSI)  D8
-//   SCK         D9
-//   CS          D7
-//   DC          D6
-//   RESET       -1  (not connected)
+// Display layout (128x128):
+//   Rows   0-103  : Doom game image (128x104, scaled from 320x200)
+//   Row  104      : divider line
+//   Rows 105-127  : status bar (frame count + last keypress)
 
 #include "Arduino.h"
 #include <Adafruit_SSD1327.h>
@@ -24,9 +17,7 @@
 #define MY_OLED_DC    D6
 #define MY_OLED_RESET -1
 
-#define MY_OLED_OUT_W   128
-#define MY_OLED_OUT_H    80   // game image rows
-#define MY_OLED_YOFFSET   0   // top of display
+#define MY_OLED_OUT_H  104   // must match i_video.c
 
 static Adafruit_SSD1327 myOled(128, 128, MY_OLED_MOSI, MY_OLED_CLK,
                                 MY_OLED_DC, MY_OLED_RESET, MY_OLED_CS);
@@ -41,53 +32,51 @@ void myOledInit(void)
         myOled.clearDisplay();
         myOled.setTextSize(1);
         myOled.setTextColor(SSD1327_WHITE);
-        myOled.setCursor(0, 0);
+        myOled.setCursor(0, 108);
         myOled.println("DOOM v004 LOADING");
         myOled.display();
     }
 }
 
-// Called once per output row (0..79) with 128 nibble values (0-15).
-// Draws the row directly using drawFastHLine with a solid colour per
-// contiguous run -- reduces SPI calls vs one drawPixel per pixel.
+// Called once per output row (0..103) with 128 nibble values (0-15).
+// Groups consecutive same-shade pixels into fillRect calls to minimise
+// SPI transactions (worst case 128 calls/row, typical much fewer).
 void myOledRow(int row, uint8_t* pixels)
 {
     if (!myOledReady) return;
 
     int x = 0;
-    while (x < MY_OLED_OUT_W) {
+    while (x < 128) {
         uint8_t shade = pixels[x];
         int run = 1;
-        // Count how many consecutive pixels share the same shade
-        while (x + run < MY_OLED_OUT_W && pixels[x + run] == shade) run++;
-        // SSD1327 colour: library expects 0-15 for 4-bit modes
-        myOled.fillRect(x, MY_OLED_YOFFSET + row, run, 1, shade);
+        while (x + run < 128 && pixels[x + run] == shade) run++;
+        myOled.fillRect(x, row, run, 1, (uint16_t)shade);
         x += run;
     }
 }
 
-// Called after all 80 rows are submitted.
-// Draws the status bar in the remaining 48 rows (y=80..127).
+// Draws status bar below the game image.
+// Clears only rows 105-127 so the divider line at 104 persists.
 void myOledStatus(uint32_t frames, const char* keyLabel)
 {
     if (!myOledReady) return;
 
-    // Clear just the status area
-    myOled.fillRect(0, 82, 128, 46, 0);
+    // Divider (only needs drawing once but cheap to redraw)
+    myOled.drawFastHLine(0, 104, 128, 6);
 
-    // Divider line
-    myOled.drawFastHLine(0, 81, 128, 8);
+    // Clear status area
+    myOled.fillRect(0, 106, 128, 22, 0);
 
     myOled.setTextSize(1);
     myOled.setTextColor(SSD1327_WHITE);
 
-    myOled.setCursor(0, 84);
+    myOled.setCursor(0, 107);
     myOled.print("F:");
-    myOled.println(frames);
+    myOled.print(frames);
 
-    myOled.setCursor(0, 96);
+    myOled.setCursor(0, 117);
     myOled.print(">");
-    myOled.println(keyLabel);
+    myOled.print(keyLabel);
 }
 
 void myOledFlush(void)
