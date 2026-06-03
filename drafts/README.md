@@ -17,6 +17,8 @@ doom-oled-v001.txt uses the joystick etc but now trying to do some grayscale OLE
 
 Note: keeping doom-oled-v001.txt not the higher versions since all edits are now in i_video.c file in the src folder.
 
+Getting confusing here so I made a new folder oled. 
+
 
 So far pins are:
 
