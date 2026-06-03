@@ -15,6 +15,9 @@ Next lets mess with the grayscale OLED
 
 doom-oled-v001.txt uses the joystick etc but now trying to do some grayscale OLED. This code just stops the hdmi, nothing else.
 
+Note: keeping doom-oled-v001.txt not the higher versions since all edits are now in i_video.c file in the src folder.
+
+
 So far pins are:
 
 A0 joystick X  
@@ -23,6 +26,26 @@ D2 joystick button for run
 D3 button menu choose  
 D4 button open/close doors  
 D5 button Fire.  
+
+
+
+And the grayscale OLED is
+
+```
+ *  FOR the GRAYSCALE Waveshare OLED
+ *   black GND 
+ *   red 3v3     
+ *   blue  DIN (mosi) D8
+ *   yellow (sck) D9 
+ *   orange (cs) D7
+ *   green (dc)  D6
+ *   white (reset) not needed but D14 if you did
+ *
+ * another reference here 
+ * https://learn.adafruit.com/adafruit-gfx-graphics-library/graphics-primitives
+ *
+
+```
 
 <img width="2572" height="2572" alt="portenta" src="https://github.com/user-attachments/assets/5744032a-4190-4bfd-8be1-211f91708748" />
 
